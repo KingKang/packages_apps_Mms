@@ -68,6 +68,11 @@ public class MessagingPreferenceActivity extends PreferenceActivity
     public static final String QR_AUTO_OPEN             = "pref_key_display_quickreply_autoopen";
     public static final String DISPLAY_QR_CALLBUTTON    = "pref_key_display_quickreply_callbutton";
     public static final String LOCK_SMS			= "pref_key_lock_sms";
+
+    public static final String NOTIFICATION_VIBRATE_PATTERN = "pref_key_mms_notification_vibrate_pattern";
+    public static final String NOTIFICATION_VIBRATE_PATTERN_CUSTOM = "pref_key_mms_notification_vibrate_pattern_custom";
+    public static final String NOTIFICATION_VIBRATE_CALL ="pre_key_mms_notification_vibrate_call";
+
     public static final String ENABLE_EMOJIS = "pref_key_enable_emojis";
     public static final String ENABLE_QUICK_EMOJIS      = "pref_key_emojis_quick";
 
@@ -195,7 +200,7 @@ public class MessagingPreferenceActivity extends PreferenceActivity
         setEnabledNotificationsPref();
 
         // If needed, migrate vibration setting from a previous version
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (!sharedPreferences.contains(NOTIFICATION_VIBRATE_WHEN) &&
                 sharedPreferences.contains(NOTIFICATION_VIBRATE)) {
             int stringId = sharedPreferences.getBoolean(NOTIFICATION_VIBRATE, false) ?
